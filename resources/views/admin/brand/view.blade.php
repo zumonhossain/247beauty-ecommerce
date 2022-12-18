@@ -20,6 +20,11 @@
                                     <td>{{$data->brand_name}}</td>
                                 </tr>
                                 <tr>
+                                    <td>Discount Title</td>
+                                    <td>:</td>
+                                    <td>{{$data->brand_discount_title}}</td>
+                                </tr>
+                                <tr>
                                     <td>Brand Image</td>
                                     <td>:</td>
                                     <td>

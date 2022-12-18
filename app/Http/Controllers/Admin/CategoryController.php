@@ -55,7 +55,7 @@ class CategoryController extends Controller{
         if($request->hasFile('category_image')){
             $image1 = $request->file('category_image');
             $imageName1 = 'category_image_'.$insert.'_'.time().'.'.$image1->getClientOriginalExtension();
-            Image::make($image1)->resize(200,200)->save('uploads/admin/category/'.$imageName1);
+            Image::make($image1)->resize(1000,1000)->save('uploads/admin/category/'.$imageName1);
             Category::where('id',$insert)->update([
                 'category_image' => $imageName1
             ]);

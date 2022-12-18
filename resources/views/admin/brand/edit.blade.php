@@ -28,6 +28,12 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
+                                    <label class="form-control-label">Discount Title</label>
+                                    <input type="text" name="brand_discount_title" class="form-control" value="{{ $data->brand_discount_title }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
                                     <label class="form-control-label">Brand Image</label>
                                     <input type="file" name="brand_image" class="form-control" onchange="mainThambUrl(this)">
 

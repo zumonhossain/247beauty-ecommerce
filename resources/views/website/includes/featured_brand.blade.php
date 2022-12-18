@@ -22,9 +22,9 @@
                 @foreach( $brands as $brand )
                     <div class="col-xl-3 mb-4">
                         <div class="single-featured-brands">
-                            <a href="#">
+                            <a href="{{ url('brand/product/'.$brand->id.'/'.$brand->brand_slug) }}">
                                 <div class="single-featured-brands-image">
-                                    <a href="#">
+                                    <a href="{{ url('brand/product/'.$brand->id.'/'.$brand->brand_slug) }}">
                                         <img src="{{asset('uploads/admin/brand/'.$brand->brand_image)}}" alt="fetured brand">
                                     </a>
                                 </div>

@@ -24,6 +24,12 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
+                                    <label class="form-control-label">Discount Title</label>
+                                    <input type="text" name="brand_discount_title" class="form-control" value="{{ old('brand_discount_title') }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
                                     <label class="form-control-label">Brand Image<span class="require_star">*</span></label>
                                     <input type="file" name="brand_image" class="form-control" onchange="mainThambUrl(this)">
 
@@ -73,6 +79,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Title</th>
                                 <th>Image</th>
                                 <th>Top Brand</th>
                                 <th>Featured Brand</th>
@@ -83,6 +90,7 @@
                             @foreach($brand as $item)
                                 <tr>
                                     <td>{{ $item->brand_name }}</td>
+                                    <td>{{ $item->brand_discount_title }}</td>
                                     <td>
                                         @if($item->brand_image!='')
                                             <img src="{{asset('uploads/admin/brand/'.$item->brand_image)}}" alt="Brand" style="height: 60px; width:60px;"/>

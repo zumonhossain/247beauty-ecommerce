@@ -20,7 +20,7 @@
                                                 <th class="cart-description item">Price</th>
                                                 <th class="cart-product-name item">Color</th>
                                                 <th class="cart-qty item">Quantity</th>
-                                                <th class="cart-sub-total item">Subtotal</th>
+                                                <th class="cart-total last-item">Subtotal</th>
                                                 <th class="cart-total last-item">Remove</th>
                                             </tr>
                                         </thead>

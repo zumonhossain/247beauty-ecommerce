@@ -50,7 +50,7 @@ class BannerController extends Controller{
         if($request->hasFile('ban_image')){
             $image1=$request->file('ban_image');
             $imageName1='ban_image_'.$insert.'_'.time().'.'.$image1->getClientOriginalExtension();
-            Image::make($image1)->resize(200,200)->save('uploads/admin/banner/'.$imageName1);
+            Image::make($image1)->resize(1200,800)->save('uploads/admin/banner/'.$imageName1);
             Banner::where('id',$insert)->update([
                 'ban_image'=>$imageName1
             ]);

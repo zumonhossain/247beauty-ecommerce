@@ -34,7 +34,7 @@
 
         <script src="https://js.stripe.com/v3/"></script>
 
-        
+
     </head>
     <body>
 		<!-- ================= Header Area Start ================ -->
@@ -44,14 +44,14 @@
                 <div class="header-top">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-8 col-lg-8">
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
                                 <div class="header-top-left">
                                     <div class="left-message">
                                         <a href="#">BEAUTY BONANZA Get Your Daily Dose Of Amazing Deals </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                 <div class="header-top-right">
                                     <ul>
                                         <li>
@@ -78,14 +78,14 @@
                 <div class="header-middle">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-2 col-lg-2">
+                            <div class="col-xl-2 col-lg-2 col-md-2">
                                 <div class="header-middle-logo">
                                     <a href="{{ url('/') }}"><img src="{{asset('uploads/basic/'.$basic->basic_logo)}}" alt="logo"></a>
                                 </div>
                             </div>
-                            <div class="col-xl-5 col-lg-5 d-flex align-items-center">
+                            <div class="col-xl-5 col-lg-5 col-md-5 d-flex align-items-center">
                                 <div class="header-middle-category-menu">
-                                    <div class="header-middle-main-menu">
+                                    <div class="header-middle-main-menu d-none d-lg-block">
 										<nav>
 											<ul>
 												<li><a href="#">Categories</a></li>
@@ -120,9 +120,11 @@
 											</ul>
 										</nav>
 									</div>
+
+
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 d-flex align-items-center">
+                            <div class="col-xl-3 col-lg-3 col-md-3 d-flex align-items-center">
                                 <div class="header-middle-search">
 									<form action="">
 										<div class="input-group">
@@ -134,13 +136,13 @@
 									</form>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-2 d-flex align-items-center">
+                            <div class="col-xl-2 col-lg-2 col-md-2 d-flex align-items-center">
                                 <div class="header-middle-account-cart">
 
-                                    <nav class="navbar navbar-expand-lg navbar-light m-0 p-0">
-                                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <nav class="navbar navbar-expand m-0 p-0">
+                                        <div class="collapse navbar-collapse">
                                           <ul class="navbar-nav">
-                                            <li class="nav-item active">
+                                            <li class="nav-item">
                                                 @auth
                                                     <a href="{{ route('user.dashboard') }}">
                                                         <span class="header-middle-account-icon-account"><i class="fa-regular fa-user"></i></span>
@@ -183,7 +185,7 @@
 
                                                             <div class="clearfix cart-total">
                                                                 <div class="text-center mb-3">
-                                                                    <span style="color: #d7537b;font-weight:500">Sub Total:</span>
+                                                                    <span style="color: #d7537b;font-weight:500">Sub Total: TK</span>
                                                                     <span style="color: #d7537b;font-weight:500" id="cartSubTotal"></span>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -206,49 +208,75 @@
                 <!-- ================= Header Middle End ================ -->
 
 				<!-- ================= Header Bottom Start ================ -->
-				<div class="header-bottom-area">
-					<div class="container header-bottom-pos">
-						<div class="row">
-							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 header-bottom-static">
-								<div class="header-bottom-main-menu">
-									<nav>
-										<ul>
 
+                <!-- header-bottom start -->
+                <div class="header-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12"><!-- main menu start -->
+                                <div class="main-menu d-none d-md-block">
+                                    <nav>
+                                        <ul>
                                             @php
-                                                $categories = App\Models\Category::where('category_status',1)->orderBy('category_name','ASC')->limit(7)->get();
+                                                $categories = App\Models\Category::where('category_status',1)->orderBy('category_name','ASC')->limit(6)->get();
                                             @endphp
 
                                             @foreach($categories as $category)
-                                                <li class="header-bottom-static"><a href="#">{{ $category->category_name }}</a>
-                                                    <div class="header-bottom-mega-menu header-bottom-mega-full">
+                                                <li class="static"><a href="#">{{ $category->category_name }}</a>
+                                                    <div class="mega-menu">
                                                         @php
                                                             $subcategories = App\Models\SubCategory::where('subcategory_status',1)->where('category_id',$category->id)->orderBy('subcategory_name','ASC')->get();
                                                         @endphp
 
                                                         @foreach($subcategories as $subcategory)
                                                             <ul>
-                                                                <li class="header-bottom-mega-title"><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a></li>
-
+                                                                <li class="mega-title"><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a></li>
                                                                 @php
                                                                     $subsubcategories = App\Models\SubSubCategory::where('subcategory_id',$subcategory->id)->where('subsubcategory_status',1)->orderBy('subsubcategory_name','ASC')->get();
                                                                 @endphp
 
                                                                 @foreach($subsubcategories as $subsucategory)
-                                                                    <li><a href="{{ url('sub/subcategory/product/'.$subsucategory->id.'/'.$subsucategory->subsubcategory_slug) }}">{{ $subsucategory->subsubcategory_name }}</a></li>
+                                                                <li><a href="{{ url('sub/subcategory/product/'.$subsucategory->id.'/'.$subsucategory->subsubcategory_slug) }}">{{ $subsucategory->subsubcategory_name }}</a></li>
                                                                 @endforeach
                                                             </ul>
                                                         @endforeach
                                                     </div>
                                                 </li>
                                             @endforeach
+                                        </ul>
+                                    </nav>
+                                </div>
 
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                                <!-- main-menu-mobile-device start -->
+                                <div class="main-menu-mobile-device d-md-none">
+                                    <nav id="main-menu-mobile-device">
+                                        <ul>
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">Pages <span><i class="fas fa-angle-down"></i></span></a>
+                                                <ul class="submenu">
+                                                    <li><a href="#">Faqs</a></li>
+                                                    <li><a href="#">Services</a></li>
+                                                    <li><a href="#">Contact Us</a></li>
+                                                    <li><a href="#">Photo gallery</a></li>
+                                                    <li><a href="#">Support 24/7</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Blog</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- main-menu-mobile-device end -->
+
+                            </div><!-- main menu end -->
+                        </div>
+                    </div>
+                </div>
+                <!-- header-bottom end -->
+
+
+
+
+
 				<!-- ================= Header Bottom End ================ -->
 			</div>
 		</header>
@@ -390,7 +418,6 @@
 									<li><a href="#"><img src="{{ asset('contents/website') }}/assets/images/payment/1.webp" alt=""></a></li>
 									<li><a href="#"><img src="{{ asset('contents/website') }}/assets/images/payment/2.jpeg" alt=""></a></li>
 									<li><a href="#"><img src="{{ asset('contents/website') }}/assets/images/payment/3.jpeg" alt=""></a></li>
-									<li><a href="#"><img src="{{ asset('contents/website') }}/assets/images/payment/4.png" alt=""></a></li>
 									<li><a href="#"><img src="{{ asset('contents/website') }}/assets/images/payment/5.jpeg" alt=""></a></li>
 								</ul>
 							</div>
@@ -405,7 +432,7 @@
 
 
 
-        		<!-- ================== Cart Modal Start ==================== -->
+        <!-- ================== Cart Modal Start ==================== -->
 		<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -425,8 +452,8 @@
 							<div class="col-md-5">
 								<ul class="list-group">
 									<li class="list-group-item">
-                                        Price: <strong class="text-danger">$<span id="pprice"></span></strong>
-									    <del id="oldprice">$</del>
+                                        Price: <strong class="text-danger">TK<span id="pprice"></span></strong>
+									    <del id="oldprice">TK</del>
 									</li>
 									<li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
 									<li class="list-group-item">Category: <strong id="pcategory"></strong></li>
@@ -491,6 +518,7 @@
 			});
 
 		</script>
+
 
 
 
@@ -644,7 +672,7 @@
                                             </div>
                                             <div class="col-sm-6 pl-0 pr-0">
                                                 <h3 class="w-cart-name"><a href="index8a95.html?page-detail">${value.name}</a></h3>
-                                                <div class="price">$${value.price} * ${value.qty}</div>
+                                                <div class="price">TK${value.price} * ${value.qty}</div>
                                             </div>
                                             <div class="col-sm-2 pr-0">
                                                 <button class="cart-trash-icon" style="border:none;background:none;cursor:pointer" type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button>
@@ -758,8 +786,11 @@
                                     <td class="col-md-7">
                                         <div class="wishlist-product-name"><a href="#">${value.product.product_name}</a></div>
                                         <div class="wishlist-product-price">
-                                            <span class="wishlist-product-main-price">$500</span>
-                                            <span class="wishlist-product-discount-price"><del>$800</del></span>
+                                            ${value.product.discount_price == null
+											? `${value.product.selling_price} TK `
+											:
+											`<span>${value.product.discount_price} TK </span> <span class="best-seller-discount-price">${value.product.selling_price} TK </span>`
+                                            }
                                         </div>
                                     </td>
                                     <td class="col-md-2">
@@ -842,7 +873,7 @@
                                             <div class="product-name"><span>${value.name}</span></div>
                                         </td>
                                         <td class="col-md-2">
-                                            <span>$${value.price}</span>
+                                            <span>${value.price} TK</span>
                                         </td>
                                         <td class="col-md-2">
                                             <span>${value.options.color}</span>
@@ -865,7 +896,7 @@
 
                                         </td>
                                         <td class="col-md-1">
-                                            <span>$${value.subtotal}</span>
+                                            <span>${value.subtotal} TK</span>
                                         </td>
                                         <td class="col-md-1">
                                             <button type="submit" class="cart-close-btn" id="${value.rowId}" onclick="cartRemove(this.id)"><i class="fa fa-times"></i></button>
@@ -1017,10 +1048,10 @@
                                 <tr>
                                     <th>
                                         <div class="cart-sub-total text-right">
-                                            Subtotal = <span class="inner-left-md">$${data.total}</span>
+                                            Subtotal = <span class="inner-left-md">${data.total} TK</span>
                                         </div>
                                         <div class="cart-grand-total text-right">
-                                            Grand Total = <span class="inner-left-md">$${data.total}</span>
+                                            Grand Total = <span class="inner-left-md">${data.total} TK</span>
                                         </div>
                                     </th>
                                 </tr>
@@ -1032,17 +1063,17 @@
 								<tr>
 									<th>
 										<div class="cart-sub-total text-right">
-											Subtotal = <span class="inner-left-md">$${data.subtotal}</span>
+											Subtotal = <span class="inner-left-md">${data.subtotal} TK</span>
 										</div>
 										<div class="cart-sub-total text-right">
 											Coupon = <span class="inner-left-md">${data.coupon_name} </span>
 											<button class="cupon-close-button" type="submit" onclick="couponRemove()"><i class="fa fa-times"></i></button>
 										</div>
 										<div class="cart-sub-total text-right">
-											Discount Amount = <span class="inner-left-md">$${data.discount_amount}</span>
+											Discount Amount = <span class="inner-left-md">${data.discount_amount} TK</span>
 										</div>
 										<div class="cart-grand-total text-right">
-											Grand Total = <span class="inner-left-md">$${data.total_amount}</span>
+											Grand Total = <span class="inner-left-md">${data.total_amount} TK</span>
 										</div>
 									</th>
 								</tr>

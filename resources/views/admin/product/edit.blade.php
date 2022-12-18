@@ -88,19 +88,6 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Gram</label>
-                                    <select class="form-control select2-show-search" name="gram_id">
-                                        <option value="">-- Select Gram --</option>
-                                        @foreach ($grams as $gram)
-                                            <option value="{{ $gram->id }}"
-                                                {{ $gram->id == $product->gram_id ? 'selected' : '' }}>
-                                                {{ $gram->gram_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
                                     <label class="form-control-label">Product Name<span
                                             class="require_star">*</span></label>
                                     <input class="form-control" type="text" name="product_name"

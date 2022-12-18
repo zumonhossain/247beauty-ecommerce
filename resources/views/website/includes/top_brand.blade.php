@@ -19,7 +19,7 @@
 
                 @foreach( $brands as $brand )
                     <div class="col-xl-6 col-lg-6 mb-4">
-                        <a href="#">
+                        <a href="{{ url('brand/product/'.$brand->id.'/'.$brand->brand_slug) }}">
                             <div class="top-brand-body-content" style="background-image: url('{{asset('uploads/admin/brand/'.$brand->brand_image)}}');">
                                 <div class="top-brand-text">
                                     <div class="top-brand-text-discount">

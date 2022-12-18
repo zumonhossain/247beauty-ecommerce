@@ -51,10 +51,10 @@ Product Details
                                 <div class="col-sm-12">
                                     <div class="details-cart-price">
                                         @if ($product->discount_price == NULL)
-                                            <span class="non-del">${{ $product->selling_price }}</span>
+                                            <span class="non-del">{{ $product->selling_price }} TK</span>
                                         @else
-                                            <span class="non-del">${{ $product->discount_price }}</span>
-                                            <span class="del"><del>${{ $product->selling_price }}</del></span>
+                                            <span class="non-del">{{ $product->discount_price }} TK</span>
+                                            <span class="del"><del>{{ $product->selling_price }} TK</del></span>
                                         @endif
                                     </div>
                                 </div>
@@ -96,9 +96,9 @@ Product Details
 
                         <div class="details-quantity-add-to-cart mt-3">
                             <div class="row">
-                                <div class="col-sm-3 pr-0 mr-2">
+                                <div class="col-sm-3 pr-0">
                                     <div class="details-add-to-cart">
-                                        <button type="submit" class="btn"style="background-color:#d7537b;color:#ffffff">Buy Now</button>
+                                        <a href="{{ route('checkout') }}" class="btn"style="background-color:#d7537b;color:#ffffff;padding: 6px 15px;">Buy Now</a>
                                     </div>
                                 </div>
                                 <div class="col-sm-7 pl-0">
@@ -125,10 +125,10 @@ Product Details
                                     <span>Free Delevery</span>
                                 </div>
                                 <div class="spdrsc-order-over">
-                                    <span>For Order Over $50</span>
+                                    <span>For Order Over 50 TK</span>
                                 </div>
                                 <div class="spdrsc-standard">
-                                    <span>Standard : $50 / $100</span>
+                                    <span>Standard : 50 TK / 100 TK</span>
                                 </div>
                             </div>
                         </div>
@@ -267,10 +267,10 @@ Product Details
                                             </div>
                                             <div class="best-seller-price">
                                                 @if ($product->discount_price == NULL)
-                                                    <span class="price">${{ $product->selling_price }}</span>
+                                                    <span class="price">{{ $product->selling_price }} TK</span>
                                                 @else
-                                                    <span class="price">${{ $product->discount_price }}</span>
-                                                    <span class="price-before-discount">${{ $product->selling_price }}</span>
+                                                    <span class="price">{{ $product->discount_price }} TK</span>
+                                                    <span class="price-before-discount">{{ $product->selling_price }} TK</span>
                                                 @endif
                                             </div>
                                         </div>

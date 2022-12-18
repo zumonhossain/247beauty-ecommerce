@@ -184,72 +184,43 @@ label {
     Header Top Css
 ==========================================
 */
-.header-area {
-	min-height: 170px;
-}
-.header-top{
-	background-color: #d7537b;
-	height: 40px;
-    line-height: 40px;
-    padding: 0px;
-    position: relative;
-    /* z-index: 10001 !important; */
+.header-top {
+    background-color: #d7537b;
+    padding: 10px 0px;
 }
 .header-top-left {
-    vertical-align: middle;
-    float: left;
-    height: 40px;
-    margin-bottom: 0 !important;
-    overflow: hidden;
-    position: relative;
-	width: 100%;
+
 }
 .left-message {
-    position: absolute;
-    left: 0;
-    top: 0;
-    animation: slide 2s infinite;
-    letter-spacing: -0.1px;
-    line-height: 40px;
-    border: 0px !important;
+
 }
 .left-message a {
-    color: #ffffff;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 14px;
     text-decoration: none;
-	font-weight: 500;
-	font-size: 14px;
 }
 .header-top-right ul {
     float: right;
 }
 .header-top-right ul li {
     display: inline-block;
-    width: auto;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 13px;
+    margin-right: 10px;
 }
 .header-top-right ul li:last-child {
-    padding: 0 0px;
+    margin-right: 0px;
 }
 .header-top-right ul li a {
-    width: 100%;
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
+    color: #ffffff;
 }
 span.header-top-right-icon {
-    font-size: 14px;
-    float: left;
-    margin-right: 3px;
-    color: #fff;
+
 }
 span.header-top-right-text {
-    margin-left: 2px;
+
 }
 .header-top-right ul li a:hover{
-	color: #ffffff;
-	border-color: #ffffff;
+
 }
 /*
 ==========================================
@@ -379,7 +350,7 @@ span.header-middle-account-icon-shoping {
 span.header-middle-account-text {
     color: #d7537b;
 }
-.navbar-expand-lg .navbar-nav .dropdown-menu {
+.navbar-expand .navbar-nav .dropdown-menu {
     position: absolute;
     left: -210px;
     width: 270px;
@@ -952,6 +923,152 @@ span.best-seller-discount-price {
 ==========================================
 */
 
+/* header bottom main menu */
+.header-bottom {
+    padding: 20px 0px;
+}
+.main-menu{}
+.main-menu ul{}
+.main-menu ul li {
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+}
+.main-menu ul li a {
+    color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+.main-menu ul li:hover > a {
+    color: #ff9600;
+}
+.main-menu ul li a i {
+    padding-left: 5px;
+}
+/* submenu */
+.main-menu ul li ul.submenu {
+    background: #fff;
+    left: -50px;
+    opacity: 0;
+    position: absolute;
+    top: 150%;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    visibility: hidden;
+    width: 180px;
+    margin-top: 10px;
+    z-index: 1;
+    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,.15);
+            box-shadow: 0 0 6px 0 rgba(0,0,0,.15);
+}
+.main-menu ul li:hover > ul.submenu{
+    opacity:1;
+    visibility:visible;
+    top:100%;
+}
+.main-menu ul li ul.submenu li {
+  display: block;
+  margin: 0;
+}
+.main-menu ul li ul.submenu li a {
+  color: #495057;
+    padding: 10px 20px;
+    font-weight: normal;
+}
+.main-menu ul li ul.submenu li:hover > a{
+    color:#ff9600
+}
+.main-menu ul li ul.submenu li ul.submenu {
+  left: 100%;
+  top: 0;
+}
+.main-menu ul li.static{
+    position: static;
+}
+ /* header bottom mega menu */
+
+
+/* mega-menu */
+.main-menu ul li .mega-menu {
+    background: #ffffff;
+    position: absolute;
+    top: 150%;
+    width: 1080px;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    left: 0;
+    z-index: 999999;
+    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,.15);
+            box-shadow: 0 0 6px 0 rgba(0,0,0,.15);
+}
+.main-menu ul li:hover .mega-menu{
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+.main-menu ul li .mega-menu ul{
+    float: left;
+    width: 25%;
+    padding-right: 25px;
+}
+.main-menu ul li .mega-menu ul:last-child{
+    padding-right: 0px;
+}
+.main-menu ul li .mega-menu ul li{
+    display: block;
+    margin: 0;
+}
+.main-menu ul li .mega-menu ul li a{
+    color: #212529;
+    padding: 4px 15px;
+    text-transform: capitalize;
+    padding-left:0px;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+}
+.main-menu ul li .mega-menu ul li.mega-title a{
+    border-bottom: 1px solid #fff;
+}
+.main-menu ul li .mega-menu ul li.mega-title a{
+    border-bottom:1px solid #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+/* header bottom-right */
+.header-bottom-right{}
+.header-bottom-right ul{}
+.header-bottom-right ul li {
+    display: inline-block;
+    margin-left: 19px;
+}
+.header-bottom-right ul li:first-child{margin-left: 0px;}
+.header-bottom-right ul li a {
+    color: #444;
+    font-weight: 600;
+    font-size: 15px;
+}
+.header-bottom-right ul li a {
+    color: #444;
+    font-weight: 400;
+    font-size: 15px;
+}
+.header-bottom-right ul li:hover > a {
+    color: #ff9600;
+}
 
 
 

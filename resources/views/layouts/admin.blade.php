@@ -10,10 +10,12 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
+    @php
+        $basic = App\Models\Basic::where('basic_status',1)->firstOrFail();
+    @endphp
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('contents/admin') }}/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('uploads/basic/'.$basic->basic_favicon)}}">
     <title> @yield('title') </title>
     <link href="{{ asset('contents/admin') }}/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="{{ asset('contents/admin') }}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,18 +42,13 @@
                     <a class="navbar-brand" href="{{ url('admin/dashboard') }}">
                         <!-- Logo icon -->
                         <b>
-                            <!-- Dark Logo icon -->
-                            <img src="{{ asset('contents/admin') }}/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="{{ asset('contents/admin') }}/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <strong style="color: #ffffff">f</strong>
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
                             <!-- dark Logo text -->
-                            <img src="{{ asset('contents/admin') }}/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
-                            <img src="{{ asset('contents/admin') }}/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            <img src="{{asset('uploads/basic/'.$basic->basic_logo)}}" alt="homepage" class="dark-logo custom-pr-logo" width="145px" height="59"/>
                         </span>
                     </a>
                 </div>

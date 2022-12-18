@@ -44,10 +44,10 @@
                                         </div>
                                         <div class="best-seller-price">
                                             @if ($product->discount_price == NULL)
-                                                <span class="best-seller-main-price">${{ $product->selling_price }}</span>
+                                                <span class="best-seller-main-price">{{ $product->selling_price }} TK</span>
                                             @else
-                                                <span class="best-seller-main-price">${{ $product->discount_price }}</span>
-                                                <span class="best-seller-discount-price">${{ $product->selling_price }}</span>
+                                                <span class="best-seller-main-price">{{ $product->discount_price }} TK</span>
+                                                <span class="best-seller-discount-price">{{ $product->selling_price }} TK</span>
                                             @endif
                                         </div>
                                     </div>

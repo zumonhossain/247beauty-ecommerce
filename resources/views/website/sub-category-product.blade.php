@@ -10,7 +10,7 @@
                     <div class="row">
 
 
-                        <div class='col-md-3 sidebar'>
+                        <div class='col-md-3 sidebar mb-4'>
                             <div class="sidebar-module-container">
                                 <div class="sidebar-widget">
                                     <div class="widget-header">
@@ -18,43 +18,36 @@
                                     </div>
                                     <div class="sidebar-widget-body">
                                         <div class="accordion">
-                                            <div class="accordion-group">
-                                                <div class="accordion-heading">
-                                                    <a href="#collapseOne" data-toggle="collapse"
-                                                        class="accordion-toggle collapsed">
-                                                        Camera
-                                                    </a>
-                                                </div>
-                                                <div class="accordion-body collapse" id="collapseOne" style="height: 0px;">
-                                                    <div class="accordion-inner">
-                                                        <ul>
-                                                            <li><a href="#">gaming</a></li>
-                                                            <li><a href="#">office</a></li>
-                                                            <li><a href="#">kids</a></li>
-                                                            <li><a href="#">for women</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="accordion-group">
-                                                <div class="accordion-heading">
-                                                    <a href="#collapseTwo" data-toggle="collapse"
-                                                        class="accordion-toggle collapsed">
-                                                        Desktops
-                                                    </a>
-                                                </div>
-                                                <div class="accordion-body collapse" id="collapseTwo" style="height: 0px;">
-                                                    <div class="accordion-inner">
-                                                        <ul>
-                                                            <li><a href="#">gaming</a></li>
-                                                            <li><a href="#">office</a></li>
-                                                            <li><a href="#">kids</a></li>
-                                                            <li><a href="#">for women</a></li>
-                                                        </ul>
+                                            @php
+                                                $categories = App\Models\Category::where('category_status',1)->orderBy('category_name','ASC')->limit(6)->get();
+                                            @endphp
+
+                                            @foreach($categories as $category)
+                                                <div class="accordion-group">
+                                                    <div class="accordion-heading">
+                                                        <a href="#collapseOne{{ $category->id }}" data-toggle="collapse"
+                                                            class="accordion-toggle collapsed">
+                                                            {{ $category->category_name }}
+                                                        </a>
+                                                    </div>
+                                                    <div class="accordion-body collapse" id="collapseOne{{ $category->id }}" style="height: 0px;">
+                                                        <div class="accordion-inner">
+                                                            @php
+                                                                $subcategories = App\Models\SubCategory::where('subcategory_status',1)->where('category_id',$category->id)->orderBy('subcategory_name','ASC')->get();
+                                                            @endphp
+
+                                                            @foreach($subcategories as $subcategory)
+                                                                <ul>
+                                                                    <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a></li>
+                                                                </ul>
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -106,10 +99,10 @@
                                                         </div>
                                                         <div class="product-price">
                                                             @if ($product->discount_price == NULL)
-                                                                <span class="best-seller-main-price">${{ $product->selling_price }}</span>
+                                                                <span class="best-seller-main-price">{{ $product->selling_price }} TK</span>
                                                             @else
-                                                                <span class="best-seller-main-price">${{ $product->discount_price }}</span>
-                                                                <span class="best-seller-discount-price">${{ $product->selling_price }}</span>
+                                                                <span class="best-seller-main-price">{{ $product->discount_price }} TK</span>
+                                                                <span class="best-seller-discount-price">{{ $product->selling_price }} TK</span>
                                                             @endif
                                                         </div>
                                                         <div class="shop-cart-list mt-2">
@@ -159,10 +152,10 @@
                                                     </div>
                                                     <div class="product-price">
                                                         @if ($product->discount_price == NULL)
-                                                            <span class="best-seller-main-price">${{ $product->selling_price }}</span>
+                                                            <span class="best-seller-main-price">{{ $product->selling_price }} TK</span>
                                                         @else
-                                                            <span class="best-seller-main-price">${{ $product->discount_price }}</span>
-                                                            <span class="best-seller-discount-price">${{ $product->selling_price }}</span>
+                                                            <span class="best-seller-main-price">{{ $product->discount_price }} TK</span>
+                                                            <span class="best-seller-discount-price">{{ $product->selling_price }} TK</span>
                                                         @endif
                                                     </div>
                                                     <div class="shop-list-description">
@@ -204,7 +197,7 @@
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>

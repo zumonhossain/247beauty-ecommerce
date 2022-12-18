@@ -372,6 +372,7 @@ button.wishlist-product-close-icon:hover {
   }
   .sidebar .sidebar-module-container .sidebar-widget .sidebar-widget-body .accordion .accordion-group .accordion-body .accordion-inner ul li a {
     color: #666666;
+    font-size: 14px;
   }
   .sidebar .sidebar-module-container .sidebar-widget .sidebar-widget-body .accordion .accordion-group .accordion-body .accordion-inner ul li a:before {
     content: "\f105";

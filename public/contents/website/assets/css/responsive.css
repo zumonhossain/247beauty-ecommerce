@@ -1,6 +1,6 @@
 /* Normal desktop :1200px. */
 @media (min-width: 1200px) and (max-width: 1500px) {
-    
+
 
 }
 
@@ -10,14 +10,32 @@
 
 }
 
- 
+/* Normal desktop :992px. */
+@media (min-width: 768px) and (max-width: 992px) {
+    .header-middle-logo img {
+        width: 202px !important;
+        height: 85px;
+    }
+}
+
+
 /* small mobile :320px. */
 @media (max-width: 767px) {
- 
+    .header-top-left {
+        text-align: center;
+    }
+
+    .header-top-right ul {
+        float: inherit !important;
+        text-align: center;
+    }
+    .left-message {
+        margin-bottom: 10px;
+    }
 }
- 
+
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 .container {width:450px}
- 
+
 }

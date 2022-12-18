@@ -59,7 +59,7 @@ class BrandController extends Controller{
         if($request->hasFile('brand_image')){
             $image1=$request->file('brand_image');
             $imageName1='brand_image_'.$insert.'_'.time().'.'.$image1->getClientOriginalExtension();
-            Image::make($image1)->resize(200,200)->save('uploads/admin/brand/'.$imageName1);
+            Image::make($image1)->resize(1200,1200)->save('uploads/admin/brand/'.$imageName1);
             Brand::where('id',$insert)->update([
                 'brand_image'=>$imageName1
             ]);
@@ -193,7 +193,7 @@ class BrandController extends Controller{
             if($request->hasFile('brand_image')){
                 $image1=$request->file('brand_image');
                 $imageName1='brand_image_'.$insertBrand.'_'.time().'.'.$image1->getClientOriginalExtension();
-                Image::make($image1)->resize(200,200)->save('uploads/admin/brand/'.$imageName1);
+                Image::make($image1)->resize(2000,2000)->save('uploads/admin/brand/'.$imageName1);
                 Brand::where('id',$insertBrand)->update([
                     'brand_image'=>$imageName1
                 ]);

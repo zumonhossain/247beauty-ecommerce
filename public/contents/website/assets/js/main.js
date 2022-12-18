@@ -68,16 +68,12 @@ $('.best-sellers-active').owlCarousel({
 // meanmenu
 $('#mobile-menu').meanmenu({
 	meanMenuContainer: '.mobile-menu',
-	meanScreenWidth: "992"
+	meanScreenWidth: "767"
 });
-
-//off-canvas-menu
-$(".menu-trigger").on("click", function() {
-	$(".off-canvas-menu, .off-canvas-overlay").addClass("active");
-	return false;
-});
-$(".menu-close, .off-canvas-overlay").on("click", function() {
-	$(".off-canvas-menu, .off-canvas-overlay").removeClass("active");
+// Main Menu Mobile Device
+$('#main-menu-mobile-device').meanmenu({
+	meanMenuContainer: '.main-menu-mobile-device',
+	meanScreenWidth: "767"
 });
 
 

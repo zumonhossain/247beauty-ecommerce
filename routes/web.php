@@ -5,6 +5,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\CustomPaymentSubmitController;
 use App\Http\Controllers\User\ProductReviewController;
 use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\Admin\AdminController;
@@ -291,6 +292,8 @@ Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'User'
 
     //stripe payment
     route::post('stripe/order-complete',[StripeController::class,'store'])->name('stripe.order');
+    // CustomPaymentSubmit
+    route::post('payment/submit',[CustomPaymentSubmitController::class,'customPaymentSubmit'])->name('customPaymentSubmit');
 
     //user orders
     Route::get('orders',[UserController::class,'orderCreate'])->name('my-orders');
@@ -329,6 +332,8 @@ Route::group(['middleware'=>['user','auth']], function(){
 // Website Route Start
 Route::get('/',[WebsiteController::class, 'index']);
 route::get('product/details/{id}/{slug}',[WebsiteController::class,'productDetails'])->name('productDetails');
+//brand wise product show
+route::get('brand/product/{brand_id}/{slug}',[WebsiteController::class,'brandWiseProduct'])->name('brandWiseProduct');
 //subcategory wise product show
 route::get('subcategory/product/{subcat_id}/{slug}',[WebsiteController::class,'subCatWiseProduct'])->name('subCatWiseProduct');
 //Sub-subcategory wise product show
