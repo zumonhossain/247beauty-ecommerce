@@ -65,6 +65,23 @@ $('.best-sellers-active').owlCarousel({
 	}
 })
 
+// category-movile-view-active
+$('.category-movile-view-active').owlCarousel({
+	loop:true,
+	margin:30,
+	navText:false,
+	nav:true,
+	dots:false,
+	responsive:{
+			0:{
+					items:4
+			},
+			768:{
+					items:4
+			}
+	}
+})
+
 // meanmenu
 $('#mobile-menu').meanmenu({
 	meanMenuContainer: '.mobile-menu',

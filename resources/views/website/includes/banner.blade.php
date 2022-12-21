@@ -14,7 +14,7 @@
                 @foreach( $banners as $banner )
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                         <a href="{{ $banner->ban_url }}">
-                            <img class="d-block w-100 slider-image" src="{{asset('uploads/admin/banner/'.$banner->ban_image)}}" alt="Banner" height="350">
+                            <img class="d-block w-100 slider-image" src="{{asset('uploads/admin/banner/'.$banner->ban_image)}}" alt="Banner">
                         </a>
                         <div class="slider-content">
 

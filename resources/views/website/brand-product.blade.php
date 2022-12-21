@@ -120,9 +120,11 @@
                                                 </div>
                                             </div>
                                         @empty
-                                            <div class="text-danger" style="font-size:35px;text-align:center;margin-bottom: 50px;font-weight: bold;">
+                                        <div class="col-12">
+                                            <div class="text-danger" style="font-size:25px;text-align:center;margin-bottom: 50px;font-weight: bold;">
                                                 No Product Found
                                             </div>
+                                        </div>
                                         @endforelse
 
                                     </div>
@@ -187,8 +189,10 @@
                                                 </div>
                                             </div>
                                         @empty
-                                            <div class="text-danger" style="font-size:35px;text-align:center;margin-bottom: 50px;font-weight: bold;">
-                                                No Product Found
+                                            <div class="col-12">
+                                                <div class="text-danger" style="font-size:25px;text-align:center;margin-bottom: 50px;font-weight: bold;">
+                                                    No Product Found
+                                                </div>
                                             </div>
                                         @endforelse
 

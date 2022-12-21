@@ -78,13 +78,14 @@
                 <div class="header-middle">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-md-2">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
                                 <div class="header-middle-logo">
                                     <a href="{{ url('/') }}"><img src="{{asset('uploads/basic/'.$basic->basic_logo)}}" alt="logo"></a>
                                 </div>
                             </div>
-                            <div class="col-xl-5 col-lg-5 col-md-5 d-flex align-items-center">
+                            <div class="col-xl-5 col-lg-5 col-md-1 col-sm-12 d-flex align-items-center">
                                 <div class="header-middle-category-menu">
+
                                     <div class="header-middle-main-menu d-none d-lg-block">
 										<nav>
 											<ul>
@@ -120,11 +121,9 @@
 											</ul>
 										</nav>
 									</div>
-
-
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-3 d-flex align-items-center">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex align-items-center">
                                 <div class="header-middle-search">
 									<form action="">
 										<div class="input-group">
@@ -136,7 +135,47 @@
 									</form>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2 d-flex align-items-center">
+
+
+                            <div class="col-sm-8 col-8 d-md-none">
+                                <!-- main-menu-mobile-device start -->
+                                <div class="main-menu-mobile-device">
+                                    <nav id="main-menu-mobile-device">
+                                        <ul>
+                                            @php
+                                                $categories = App\Models\Category::where('category_status',1)->orderBy('category_name','ASC')->limit(6)->get();
+                                            @endphp
+
+                                            @foreach($categories as $category)
+                                                <li><a href="#" style="color: #000000;font-weight:bold">{{ $category->category_name }}</a></li>
+                                                @php
+                                                    $subcategories = App\Models\SubCategory::where('subcategory_status',1)->where('category_id',$category->id)->orderBy('subcategory_name','ASC')->get();
+                                                @endphp
+
+                                                @foreach($subcategories as $subcategory)
+                                                <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a>
+                                                    <ul class="submenu">
+                                                        @php
+                                                            $subsubcategories = App\Models\SubSubCategory::where('subcategory_id',$subcategory->id)->where('subsubcategory_status',1)->orderBy('subsubcategory_name','ASC')->get();
+                                                        @endphp
+
+                                                        @foreach($subsubcategories as $subsucategory)
+                                                            <li><a href="{{ url('sub/subcategory/product/'.$subsucategory->id.'/'.$subsucategory->subsubcategory_slug) }}">{{ $subsucategory->subsubcategory_name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                                @endforeach
+                                            @endforeach
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- main-menu-mobile-device end -->
+                            </div>
+
+
+
+
+                            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-4 d-flex align-items-center">
                                 <div class="header-middle-account-cart">
 
                                     <nav class="navbar navbar-expand m-0 p-0">
@@ -202,6 +241,9 @@
 
                                 </div>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -210,11 +252,11 @@
 				<!-- ================= Header Bottom Start ================ -->
 
                 <!-- header-bottom start -->
-                <div class="header-bottom">
+                <div class="header-bottom d-none d-md-block">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12"><!-- main menu start -->
-                                <div class="main-menu d-none d-md-block">
+                                <div class="main-menu">
                                     <nav>
                                         <ul>
                                             @php
@@ -246,28 +288,7 @@
                                         </ul>
                                     </nav>
                                 </div>
-
-                                <!-- main-menu-mobile-device start -->
-                                <div class="main-menu-mobile-device d-md-none">
-                                    <nav id="main-menu-mobile-device">
-                                        <ul>
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Pages <span><i class="fas fa-angle-down"></i></span></a>
-                                                <ul class="submenu">
-                                                    <li><a href="#">Faqs</a></li>
-                                                    <li><a href="#">Services</a></li>
-                                                    <li><a href="#">Contact Us</a></li>
-                                                    <li><a href="#">Photo gallery</a></li>
-                                                    <li><a href="#">Support 24/7</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Blog</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- main-menu-mobile-device end -->
-
-                            </div><!-- main menu end -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -282,6 +303,36 @@
 		</header>
 		<!-- ================= Header Area End ================ -->
 
+        <!-- ================= Category Picture Area Start ================ -->
+        <section class="d-md-none category-style">
+            <div class="category-movile-view-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12">
+                            <div class="owl-carousel category-movile-view-active">
+
+                                @php
+                                    $categories = App\Models\Category::where('category_status',1)->orderBy('category_name','ASC')->limit(6)->get();
+                                @endphp
+
+                                @foreach($categories as $category)
+                                    <div class="single-category-movile-view">
+                                        <div class="category-seller-content">
+                                            <a href="{{ url('category/product/'.$category->id.'/'.$category->category_slug) }}">
+                                                <img style="border-radius: 5px" src="{{asset('uploads/admin/category/'.$category->category_image)}}" alt="Category Image" height="40px">
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ================= Category Picture Area End ================ -->
+
+
         @yield('content')
 
 		<!-- ==================== Footer Area Start ==================== -->
@@ -291,7 +342,7 @@
 			<section class="footer-top">
 				<div class="container">
 					<div class="row">
-						<div class="col-xl-4 col-lg-4 col-md-5">
+						<div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12">
 							<div class="footer-list-item">
 								<div class="footer-title">
 									<h3>Contact us</h3>
@@ -306,7 +357,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-8 col-lg-8 col-md-7">
+						<div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
 							<div class="row">
 								<div class="col-xl-4 col-lg-4 col-md-6">
 									<div class="footer-list-item">
@@ -368,7 +419,7 @@
 				<div class="footer-middle-overlay"></div>
 				<div class="container">
 					<div class="row">
-						<div class="col-xl-5 col-lg-5 col-md-6">
+						<div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
 							<div class="follow">
 								<div class="footer-social-title d-none d-xl-block">
 									<h3>Follow us by</h3>
@@ -385,7 +436,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-7 col-lg-7 col-md-6">
+						<div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12 d-none d-md-block">
 							<div class="newsletter">
 								<div class="footer-social-title d-none d-xl-block">
 									<h3>Sign Up for Newsletter</h3>
@@ -407,12 +458,12 @@
 			<div class="footer-bottom">
 				<div class="container">
 					<div class="row">
-						<div class="col-xl-6 col-lg-6">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 							<div class="footer-copy">
 								<p>247beauty © 2022 Developed by Projonmo Digital Limited</p>
 							</div>
 						</div>
-						<div class="col-xl-6 col-lg-6">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 							<div class="payment-cart">
 								<ul>
 									<li><a href="#"><img src="{{ asset('contents/website') }}/assets/images/payment/1.webp" alt=""></a></li>
@@ -493,7 +544,6 @@
 
 		<!-- all js here -->
         <script src="{{ asset('contents/website') }}/assets/js/vendor/jquery-3.2.1.min.js"></script>
-        <script src="{{ asset('contents/website') }}/assets/js/jquery-3.6.0.min.js"></script>
         <script src="{{ asset('contents/website') }}/assets/js/popper.min.js"></script>
         <script src="{{ asset('contents/website') }}/assets/js/bootstrap.min.js"></script>
         <script src="{{ asset('contents/website') }}/assets/js/owl.carousel.min.js"></script>

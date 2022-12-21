@@ -332,6 +332,8 @@ Route::group(['middleware'=>['user','auth']], function(){
 // Website Route Start
 Route::get('/',[WebsiteController::class, 'index']);
 route::get('product/details/{id}/{slug}',[WebsiteController::class,'productDetails'])->name('productDetails');
+//Category wise Category Picture show
+route::get('category/product/{category_id}/{slug}',[WebsiteController::class,'categoryWiseProduct'])->name('categoryWiseProduct');
 //brand wise product show
 route::get('brand/product/{brand_id}/{slug}',[WebsiteController::class,'brandWiseProduct'])->name('brandWiseProduct');
 //subcategory wise product show

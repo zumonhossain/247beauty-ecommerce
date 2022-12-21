@@ -21,10 +21,12 @@ a.meanmenu-reveal {
   width: 100%;
   z-index: 99;
 }
-
+.main-menu-mobile-device {
+    margin-top: 40px;
+  }
 .mean-container a.meanmenu-reveal {
-	border: 1px solid #444;
-	color: #444;
+	border: 1px solid #d7537b;
+	color: #d7537b;
 	cursor: pointer;
 	display: block;
 	font-family: Arial,Helvetica,sans-serif;
@@ -35,22 +37,22 @@ a.meanmenu-reveal {
 	margin-top: -32px;
 	padding: 8px 9px;
 	position: absolute;
-	right: 0;
+	left: 0 !important;
 	text-decoration: none;
 	top: 0;
 	width: 22px;
 }
 .mean-container a.meanmenu-reveal span {
-  background: #444 none repeat scroll 0 0;
+  background: #d7537b none repeat scroll 0 0;
   display: block;
   height: 3px;
   margin-top: 3px;
 }
 
 .mean-container .mean-nav {
-	background: #0c1923 none repeat scroll 0 0;
+	background: #d7537b none repeat scroll 0 0;
 	float: left;
-	margin-top: 15px;
+	margin-top: 30px;
 	width: 100%;
 }
 
@@ -112,7 +114,7 @@ a.meanmenu-reveal {
 
 .mean-container .mean-nav ul li a:hover {
 	background: #252525;
-	background: rgba(255,255,255,0.1);
+	background: rgba(210, 162, 162, 0.1);
 }
 
 .mean-container .mean-nav ul li a.mean-expand {
@@ -138,7 +140,7 @@ a.meanmenu-reveal {
 }
 
 .mean-container .mean-nav ul li a.mean-expand:hover {
-	background: rgba(0,0,0,0.9);
+	background: rgba(185, 118, 118, 0.9);
 }
 
 .mean-container .mean-push {

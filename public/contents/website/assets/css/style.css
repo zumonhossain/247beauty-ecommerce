@@ -1009,11 +1009,29 @@ span.best-seller-discount-price {
     -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,.15);
             box-shadow: 0 0 6px 0 rgba(0,0,0,.15);
 }
+.category-style {
+    margin-top: 0px;
+    padding-bottom: 30px;
+    border-top: 2px solid #ddd;
+    padding-top: 30px;
+  }
+.slider-image{
+    height: 350px;
+}
+.promotional-banner-slider-img-two{
+    height: 200px;
+}
+.promotional-slider-image-threes{
+    height: 100px;
+}
 .main-menu ul li:hover .mega-menu{
     top: 100%;
     opacity: 1;
     visibility: visible;
 }
+.header-middle-search {
+    width: 100%;
+  }
 .main-menu ul li .mega-menu ul{
     float: left;
     width: 25%;

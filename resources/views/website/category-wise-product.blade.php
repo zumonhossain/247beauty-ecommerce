@@ -1,6 +1,6 @@
 @extends('layouts.website')
 @section('title')
-    Subcategory Product
+    Category Product
 @endsection
 @section('content')
     <!-- ==================== Product Store Page Area start ==================== -->

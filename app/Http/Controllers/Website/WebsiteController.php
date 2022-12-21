@@ -31,6 +31,14 @@ class WebsiteController extends Controller{
         return view('website.product-details',compact('product','multiImgs','color','product_color','cat_id','relatedProducts'));
     }
 
+    //Category wise product show
+    public function categoryWiseProduct(Request $request,$category_id,$slug){
+        $products = Product::where('product_status',1)->where('category_id',$category_id)->orderBy('id','DESC')->paginate(12);
+        $categories = Category::orderBy('category_name','ASC')->get();
+
+        return view('website.category-wise-product',compact('products','categories'));
+    }
+
     //brand wise product show
     public function brandWiseProduct(Request $request,$brand_id,$slug){
         $products = Product::where('product_status',1)->where('brand_id',$brand_id)->orderBy('id','DESC')->paginate(12);
