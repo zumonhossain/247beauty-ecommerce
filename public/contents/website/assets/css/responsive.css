@@ -37,10 +37,9 @@
     }
 
     .header-middle-logo img {
-        width: 160px !important;
-        height: 70px;
+        width: 130px !important;
+        height: 60px !important;
     }
-
     .header-middle-search {
         margin-bottom: 20px;
     }

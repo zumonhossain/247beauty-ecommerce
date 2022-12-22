@@ -12,6 +12,7 @@
             $basic = App\Models\Basic::where('basic_status',1)->firstOrFail();
             $social = App\Models\SocialMedia::where('sm_status',1)->firstOrFail();
             $contactInfo=App\Models\ContactInformation::where('ci_status',1)->firstOrFail();
+            $notice=App\Models\TopNotic::where('notice_status',1)->firstOrFail();
         @endphp
 
         <link rel="manifest" href="site.webmanifest">
@@ -47,7 +48,7 @@
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
                                 <div class="header-top-left">
                                     <div class="left-message">
-                                        <a href="#">BEAUTY BONANZA Get Your Daily Dose Of Amazing Deals </a>
+                                        <a href="#">{{ $notice->notice_name }}</a>
                                     </div>
                                 </div>
                             </div>

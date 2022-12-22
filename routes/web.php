@@ -10,6 +10,7 @@ use App\Http\Controllers\User\ProductReviewController;
 use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\GeneralController;
+use App\Http\Controllers\Admin\TopNoticController;
 use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ProBannerTwoController;
@@ -60,6 +61,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix'=>'admin','middleware'=>['admin','auth','permission']], function(){
     route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
 
+    // Notice
+    Route::get('dashboard/notice', [TopNoticController::class, 'notice'])->name('notice');
+    Route::post('dashboard/notice/update', [TopNoticController::class, 'update_notice'])->name('update_notice');
     // Basic
     Route::get('dashboard/general/basic', [GeneralController::class, 'basic'])->name('basic');
     Route::post('dashboard/general/basic/update', [GeneralController::class, 'update_basic'])->name('update_basic');

@@ -20,6 +20,11 @@ class GeneralController extends Controller{
         return view('admin.general.basic',compact('data'));
     }
     public function update_basic(Request $request){
+        $request->validate([
+            'basic_title'=>'required',
+        ],[
+            'basic_title.required'=>'Please enter title!',
+        ]);
 
         Basic::where('basic_status',1)->where('basic_id',1)->update([
             'basic_title'=>$request['title'],

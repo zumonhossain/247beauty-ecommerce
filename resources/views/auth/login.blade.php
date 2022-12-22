@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-4 m-auto">
 
-                        <div class="login-form-bg" style="background-color:#d7537b;padding:40px 35px">
+                        <div class="login-form-bg" style="background-color:#d7537b;padding:40px 35px;border-radius: 5px;margin-bottom:30px">
                             <div class="login-hear text-center pb-3">
                                 <h4 style="color: #ffffff">Login In</h4>
                             </div>
@@ -18,7 +18,7 @@
 
                                 <div class="form-group">
                                     <label class="info-title" for="exampleInputEmail1" style="color: #ffffff">Email Address <span class="star">*</span></label>
-                                    <input type="email" class="form-control unicase-form-control text-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="exampleInputEmail1">
+                                    <input type="email" class="form-control unicase-form-control text-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="exampleInputEmail1" placeholder="email">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="exampleInputPassword1" style="color: #ffffff">Password <span class="star">*</span></label>
-                                    <input type="password" class="form-control unicase-form-control text-input @error('password') is-invalid @enderror" name="password" id="exampleInputPassword1" >
+                                    <input type="password" class="form-control unicase-form-control text-input @error('password') is-invalid @enderror" name="password" id="exampleInputPassword1" placeholder="password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                                     <a href="{{ route('register') }}" style="color: #9f1786ad;font-size: 14px;font-weight: bold;">Register Here</a>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="submit" class="btn-upper btn checkout-page-button" style="background-color: #000000;color:#ffffff">Login</button>
+                                    <button type="submit" class="btn-upper btn checkout-page-button" style="background-color: #000000;color:#ffffff;padding: 8px 25px;">Login</button>
                                 </div>
                             </form>
                         </div>

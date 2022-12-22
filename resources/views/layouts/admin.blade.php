@@ -139,6 +139,10 @@
                         @endisset
 
                         <li>
+                            <a class="waves-effect waves-dark" href="{{ route('notice') }}" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Notice</span></a>
+                        </li>
+
+                        <li>
                             <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">General</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('basic') }}">Basic</a></li>

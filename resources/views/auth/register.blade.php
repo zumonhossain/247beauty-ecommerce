@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-5 m-auto">
 
-                        <div class="login-form-bg" style="background-color:#d7537b;padding:40px 35px">
+                        <div class="login-form-bg" style="background-color:#d7537b;padding:40px 35px;border-radius: 5px;margin-bottom:30px">
                             <div class="login-hear text-center pb-3">
                                 <h4 style="color: #ffffff">Create a new account</h4>
                             </div>
@@ -18,7 +18,7 @@
 
                                 <div class="form-group">
                                     <label class="info-title" for="exampleInputEmail1"><span style="color: #ffffff">Name</span> <span class="text-white">*</span></label>
-                                    <input type="text" class="form-control unicase-form-control text-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" id="exampleInputEmail1" >
+                                    <input type="text" class="form-control unicase-form-control text-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" id="exampleInputEmail1" placeholder="name">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong style="color: #000000">{{ $message }}</strong>
@@ -28,7 +28,7 @@
 
                                 <div class="form-group">
                                     <label class="info-title" for="exampleInputEmail2"><span style="color: #ffffff">Email Address</span> <span class="text-white">*</span></label>
-                                    <input type="email" class="form-control unicase-form-control text-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                                    <input type="email" class="form-control unicase-form-control text-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong style="color: #000000">{{ $message }}</strong>
@@ -37,11 +37,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="exampleInputEmail1"><span style="color: #ffffff">Phone Number</span></label>
-                                    <input type="phone" name="phone" class="form-control unicase-form-control text-input @error('phone') is-invalid @enderror" id="exampleInputEmail1" >
+                                    <input type="phone" name="phone" class="form-control unicase-form-control text-input @error('phone') is-invalid @enderror" id="exampleInputEmail1" placeholder="phone number">
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="exampleInputEmail1"><span style="color: #ffffff">Password</span> <span class="text-white">*</span></label>
-                                    <input type="password" class="form-control unicase-form-control text-input @error('password') is-invalid @enderror" name="password" >
+                                    <input type="password" class="form-control unicase-form-control text-input @error('password') is-invalid @enderror" name="password" placeholder="password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong style="color: #000000">{{ $message }}</strong>
@@ -50,10 +50,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="exampleInputEmail1"><span style="color: #ffffff">Confirm Password</span> <span class="text-white">*</span></label>
-                                    <input type="password" class="form-control unicase-form-control text-input" name="password_confirmation" >
+                                    <input type="password" class="form-control unicase-form-control text-input" name="password_confirmation" placeholder="password confirmation">
+                                </div>
+                                <div class="create-new-account">
+                                    <a href="{{ route('login') }}" style="color: #9f1786ad;font-size: 14px;font-weight: bold;">Already registered?</a>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="submit" class="btn-upper btn checkout-page-button" style="background-color: #000000;color:#ffffff">Sign Up</button>
+                                    <button type="submit" class="btn-upper btn checkout-page-button" style="background-color: #000000;color:#ffffff;padding: 8px 25px;">Sign Up</button>
                                 </div>
                             </form>
                         </div>
