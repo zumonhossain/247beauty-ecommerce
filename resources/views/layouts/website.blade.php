@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="{{ asset('contents/website') }}/assets/css/default.css">
         <link rel="stylesheet" href="{{ asset('contents/website') }}/assets/css/style.css">
 
+        <link rel="stylesheet" href="{{ asset('contents/website') }}/assets/css/toastr.css">
 
         <script src="https://js.stripe.com/v3/"></script>
 
@@ -561,6 +562,26 @@
         <script src="{{ asset('contents/website') }}/assets/js/plugins.js"></script>
         <script src="{{ asset('contents/website') }}/assets/js/main.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            @if(Session::has('messege'))
+                var type="{{Session::get('alert-type','info')}}"
+                switch(type){
+                    case 'info':
+                        toastr.info("{{ Session::get('messege') }}");
+                        break;
+                    case 'success':
+                        toastr.success("{{ Session::get('messege') }}");
+                        break;
+                    case 'warning':
+                        toastr.warning("{{ Session::get('messege') }}");
+                        break;
+                    case 'error':
+                        toastr.error("{{ Session::get('messege') }}");
+                    break;
+                }
+            @endif
+        </script>
 
         <script type="text/javascript" src="{{ asset('contents/common') }}/jquery.form-validator.min.js"></script>
 		<script>

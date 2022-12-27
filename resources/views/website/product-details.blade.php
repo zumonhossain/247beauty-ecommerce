@@ -4,7 +4,25 @@ Product Details
 @endsection
 @section('content')
     <!-- ==================== Product Details Area start ==================== -->
-    <section class="details-area section-padding details-bg mt-4">
+    <section>
+        <div class="product-details-breadcum">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="#">{{ $product->category->category_name }}</a></li>
+                              <li class="breadcrumb-item"><a href="#">{{ $product->subcategory->subcategory_name }}</a></li>
+                              <li class="breadcrumb-item"><a href="#">{{ $product->subsubcategory->subsubcategory_name }}</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">{{ $product->product_name }}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="details-area section-padding details-bg">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4">
