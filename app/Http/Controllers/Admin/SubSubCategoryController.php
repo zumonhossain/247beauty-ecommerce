@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
 use Carbon\Carbon;
+
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
@@ -47,23 +49,35 @@ class SubSubCategoryController extends Controller{
             'category_id'=>'required',
             'subcategory_id'=>'required',
             'subsubcategory_name'=>'required',
+            'subsubcategory_image'=>'required',
         ],[
             'category_id.required'=>'Please enter category name!',
             'subcategory_id.required'=>'Please enter subcategory name!',
             'subsubcategory_name.required'=>'Please enter sub subcategory name!',
+            'subsubcategory_image.required'=>'Please enter image!',
         ]);
 
         $slug = Str::slug($request['subsubcategory_name'], '-');
         $creator = Auth::user()->id;
 
-        SubSubCategory::insertGetId([
+        $insert = SubSubCategory::insertGetId([
             'category_id'=>$request['category_id'],
             'subcategory_id'=>$request['subcategory_id'],
             'subsubcategory_name'=>$request['subsubcategory_name'],
+            'subsubcategory_image'=>$request['subsubcategory_image'],
             'subsubcategory_slug'=>$slug,
             'subsubcategory_creator'=>$creator,
             'created_at' => Carbon::now(),
         ]);
+
+        if($request->hasFile('subsubcategory_image')){
+            $image1 = $request->file('subsubcategory_image');
+            $imageName1 = 'subsubcategory_image_'.$insert.'_'.time().'.'.$image1->getClientOriginalExtension();
+            Image::make($image1)->resize(1000,1000)->save('uploads/admin/category/'.$imageName1);
+            SubSubCategory::where('id',$insert)->update([
+                'subsubcategory_image' => $imageName1
+            ]);
+        }
 
         $notification = array(
             'messege' =>'Sub-SubCategory Upload Success!',
@@ -86,6 +100,17 @@ class SubSubCategoryController extends Controller{
 
         $slug = Str::slug($request['subsubcategory_name'], '-');
         $creator = Auth::user()->id;
+
+        if($request->hasFile('subsubcategory_image')){
+            $image=$request->file('subsubcategory_image');
+            $subsubcategory_image='subsubcategory_image_'.time().'.'.$image->getClientOriginalExtension();
+            Image::make($image)->save('uploads/admin/category/'.$subsubcategory_image);
+
+            SubSubCategory::where('id',$id)->update([
+                'subsubcategory_image'=>$subsubcategory_image,
+            ]);
+        }
+
         SubSubCategory::where('id',$id)->update([
             'category_id'=>$request['category_id'],
             'subcategory_id'=>$request['subcategory_id'],

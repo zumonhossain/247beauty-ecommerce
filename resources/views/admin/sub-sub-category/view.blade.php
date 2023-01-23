@@ -29,6 +29,13 @@
                                     <td>{{$data->subsubcategory_name}}</td>
                                 </tr>
                                 <tr>
+                                    <td>Sub Sub Category Image</td>
+                                    <td>:</td>
+                                    <td>
+                                        <img src="{{asset('uploads/admin/category/'.$data->subsubcategory_image)}}" alt="" style="height: 100px; width:150px;">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Created Date</td>
                                     <td>:</td>
                                     <td>{{ $data->created_at->format('Y-m-d') }}</td>

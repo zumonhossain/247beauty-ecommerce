@@ -18,6 +18,7 @@ class CreateSubSubCategoriesTable extends Migration
             $table->integer('category_id')->nullable();
             $table->integer('subcategory_id')->nullable();
             $table->string('subsubcategory_name')->nullable();
+            $table->string('subsubcategory_image')->nullable();
             $table->string('subsubcategory_slug')->nullable();
             $table->integer('subsubcategory_creator')->nullable();
             $table->integer('subsubcategory_status')->default(1);

@@ -10,7 +10,7 @@
                     <h4 class="user-registration"><i class="mdi mdi-account-circle"></i>Sub SubCategory Update Information</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('sub-sub-category.update') }}" id="myForm" class="form-horizontal" enctype="multipart/form-subcategory">
+                    <form method="post" action="{{ route('sub-sub-category.update') }}" id="myForm" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="id" class="form-control" value="{{ $subsubcategory->id }}">
@@ -52,6 +52,16 @@
                                     @error('subsubcategory_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <div class="form-group">
+                                    <label class="form-control-label">Sub Sub Category Image<span class="require_star">*</span></label>
+                                    <input type="file" name="subsubcategory_image" class="form-control" onchange="mainThambUrl(this)">
+
+                                    <img class="card-img-top" src="{{asset('uploads/admin/category/'.$subsubcategory->subsubcategory_image)}}" alt="Card image cap" style="height: 100px; width:150px;">
+
+                                    <img src="" id="mainThmb">
                                 </div>
                             </div>
                             <div class="col-sm-12 mt-4">

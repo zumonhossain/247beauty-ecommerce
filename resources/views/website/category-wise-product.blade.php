@@ -39,7 +39,11 @@
 
                                                             @foreach($subcategories as $subcategory)
                                                                 <ul>
-                                                                    <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a></li>
+                                                                    <li>
+                                                                        <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">
+                                                                            <img style="border-radius: 5px" src="{{asset('uploads/admin/category/'.$subcategory->subcategory_image)}}" alt="Category Image" width="82" height="65">
+                                                                        </a>
+                                                                    </li>
                                                                 </ul>
                                                             @endforeach
                                                         </div>

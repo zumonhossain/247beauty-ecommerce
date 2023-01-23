@@ -36,6 +36,17 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-sm-6 mb-2">
+                                <div class="form-group">
+                                    <label class="form-control-label">Sub Category Image<span class="require_star">*</span></label>
+                                    <input type="file" name="subcategory_image" class="form-control" onchange="mainThambUrl(this)">
+
+                                    <img src="" id="mainThmb">
+                                    @error('subcategory_image')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="col-sm-12 mt-4">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-dark registration-btn">Save Sub Category</button>
@@ -57,6 +68,7 @@
                             <tr>
                                 <th>Category Name</th>
                                 <th>Sub Category Name</th>
+                                <th>Sub Category Image</th>
                                 <th>Manage</th>
                             </tr>
                         </thead>
@@ -65,6 +77,9 @@
                                 <tr>
                                     <td>{{ $item->category->category_name }}</td>
                                     <td>{{ $item->subcategory_name }}</td>
+                                    <td>
+                                        <img src="{{asset('uploads/admin/category/'.$item->subcategory_image)}}" alt="" style="height: 60px; width:60px;">
+                                    </td>
                                     <td>
                                         <a class="btn-success view-icon" href="{{ url('admin/sub-category/view/'.$item->subcategory_slug) }}"><i class="mdi mdi-library-plus"></i></a>
                                         <a class="btn-warning edit-icon" href="{{ url('admin/sub-category/edit/'.$item->subcategory_slug) }}"><i class="mdi mdi-table-edit"></i></a>

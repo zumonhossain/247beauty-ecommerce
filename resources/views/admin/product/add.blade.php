@@ -62,14 +62,11 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Sub SubCategory Name<span class="require_star">*</span></label>
+                                    <label class="form-control-label">Sub SubCategory Name</label>
                                     <select class="form-control select2-show-search"  name="subsubcategory_id">
                                         <option value="">-- Select Sub SubCat Name --</option>
 
                                     </select>
-                                    @error('subsubcategory_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-4">

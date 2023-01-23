@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-none d-lg-block">
                                 <div class="header-top-right">
                                     <ul>
                                         <li>
@@ -321,7 +321,7 @@
                                     <div class="single-category-movile-view">
                                         <div class="category-seller-content">
                                             <a href="{{ url('category/product/'.$category->id.'/'.$category->category_slug) }}">
-                                                <img style="border-radius: 5px" src="{{asset('uploads/admin/category/'.$category->category_image)}}" alt="Category Image" height="40px">
+                                                <img style="border-radius: 5px" src="{{asset('uploads/admin/category/'.$category->category_image)}}" alt="Category Image" width="82" height="65">
                                             </a>
                                         </div>
                                     </div>
@@ -462,7 +462,7 @@
 					<div class="row">
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 							<div class="footer-copy">
-								<p>247beauty © 2022 Developed by Projonmo Digital Limited</p>
+								<p>247beauty © 2023 Developed by Projonmo Digital Limited</p>
 							</div>
 						</div>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">

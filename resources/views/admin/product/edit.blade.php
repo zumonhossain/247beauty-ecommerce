@@ -48,9 +48,7 @@
                                     <select class="form-control select2-show-search" name="category_id">
                                         <option value="">-- Select Category Name --</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}"
-                                                {{ $category->id == $product->category_id ? 'selected' : '' }}>
-                                                {{ $category->category_name }}</option>
+                                            <option value="{{ $category->id }}"{{ $category->id == $product->category_id ? 'selected' : '' }}> {{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('category_id')
@@ -63,8 +61,9 @@
                                     <label class="form-control-label">Sub Category Name<span
                                             class="require_star">*</span></label>
                                     <select class="form-control select2-show-search" name="subcategory_id">
-                                        <option value="{{ $product->id }}">{{ $product->subCategory->subcategory_name }}
-                                        </option>
+                                        @foreach ($subcategories as $subcat)
+                                            <option value="{{ $subcat->id }}"{{ $subcat->id == $product->subcategory_id ? 'selected' : '' }}> {{ $subcat->subcategory_name }}</option>
+                                        @endforeach
 
                                     </select>
                                     @error('subcategory_id')
@@ -74,16 +73,15 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Sub SubCategory Name<span
-                                            class="require_star">*</span></label>
+                                    <label class="form-control-label">Sub SubCategory Name
                                     <select class="form-control select2-show-search" name="subsubcategory_id">
-                                        <option value="{{ $product->id }}">
-                                            {{ $product->subSubCategory->subsubcategory_name }}</option>
+                                        <option value="">-- Select SubSubCat Name --</option>
+                                        @foreach ($subsubcategories as $subsubcat)
+                                            <option value="{{ $subsubcat->id }}"{{ $subsubcat->id == $product->subsubcategory_id ? 'selected' : '' }}> {{ $subsubcat->subsubcategory_name }}</option>
+                                        @endforeach
+
 
                                     </select>
-                                    @error('subsubcategory_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -110,8 +108,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Gram<span
-                                            class="require_star">*</span></label>
+                                    <label class="form-control-label">Gram
                                     <input class="form-control" type="text" name="product_gram"
                                         value="{{ $product->product_gram }}">
                                 </div>

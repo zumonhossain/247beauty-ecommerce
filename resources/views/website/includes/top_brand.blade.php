@@ -18,16 +18,15 @@
             <div class="row">
 
                 @foreach( $brands as $brand )
-                    <div class="col-xl-6 col-lg-6 mb-4">
-                        <a href="{{ url('brand/product/'.$brand->id.'/'.$brand->brand_slug) }}">
-                            <div class="top-brand-body-content" style="background-image: url('{{asset('uploads/admin/brand/'.$brand->brand_image)}}');">
-                                <div class="top-brand-text">
-                                    <div class="top-brand-text-discount">
-                                        <span>{{ $brand->brand_discount_title }}</span>
-                                    </div>
-                                    <div class="top-brand-text-description">
-                                        <span>{{ $brand->brand_name }}</span>
-                                    </div>
+                    <div class="col-xl-4 col-lg-4 mb-4">
+                        <a class="top-brand-link" href="{{ url('brand/product/'.$brand->id.'/'.$brand->brand_slug) }}">
+                            <div class="top-brand-content-body">
+                                <div class="top-brand-image">
+                                    <img src="{{asset('uploads/admin/brand/'.$brand->brand_image)}}" alt="">
+                                </div>
+                                <div class="top-brand-content">
+                                    <span class="top-brand-title">{{ $brand->brand_discount_title }}</span>
+                                    <span class="top-brand-description">{{ $brand->brand_name }}</span>
                                 </div>
                             </div>
                         </a>

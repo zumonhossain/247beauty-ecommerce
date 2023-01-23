@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\SubCategory;
 use App\Models\Category;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
@@ -39,21 +40,33 @@ class SubCategoryController extends Controller{
         $request->validate([
             'category_id'=>'required',
             'subcategory_name'=>'required',
+            'subcategory_image'=>'required',
         ],[
             'category_id.required'=>'Please enter category name!',
             'subcategory_name.required'=>'Please enter subcategory name!',
+            'subcategory_image.required'=>'Please enter image!',
         ]);
 
         $slug = Str::slug($request['subcategory_name'], '-');
         $creator = Auth::user()->id;
 
-        SubCategory::insertGetId([
+        $insert = SubCategory::insertGetId([
             'category_id'=>$request['category_id'],
             'subcategory_name'=>$request['subcategory_name'],
+            'subcategory_image'=>$request['subcategory_image'],
             'subcategory_slug'=>$slug,
             'subcategory_creator'=>$creator,
             'created_at' => Carbon::now(),
         ]);
+
+        if($request->hasFile('subcategory_image')){
+            $image1 = $request->file('subcategory_image');
+            $imageName1 = 'subcategory_image_'.$insert.'_'.time().'.'.$image1->getClientOriginalExtension();
+            Image::make($image1)->resize(1000,1000)->save('uploads/admin/category/'.$imageName1);
+            SubCategory::where('id',$insert)->update([
+                'subcategory_image' => $imageName1
+            ]);
+        }
 
         $notification = array(
             'messege' =>'SubCategory Upload Success!',
@@ -63,6 +76,7 @@ class SubCategoryController extends Controller{
     }
 
     public function update(Request $request){
+        // dd($request->all);
         $request->validate([
             'category_id'=>'required',
             'subcategory_name'=>'required',
@@ -70,11 +84,21 @@ class SubCategoryController extends Controller{
             'category_id.required'=>'Please enter category name!',
             'subcategory_name.required'=>'Please enter subcategory name!',
         ]);
-        
+
         $id = $request->id;
 
         $slug = Str::slug($request['subcategory_name'], '-');
         $creator = Auth::user()->id;
+
+        if($request->hasFile('subcategory_image')){
+            $image=$request->file('subcategory_image');
+            $subcategory_image='subcategory_image_'.time().'.'.$image->getClientOriginalExtension();
+            Image::make($image)->save('uploads/admin/category/'.$subcategory_image);
+
+            SubCategory::where('id',$id)->update([
+                'subcategory_image'=>$subcategory_image,
+            ]);
+        }
 
         SubCategory::where('subcategory_status',1)->where('id',$id)->update([
             'category_id'=>$request['category_id'],

@@ -5,7 +5,7 @@
 */
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,500,600,700|Poppins:300,400,500,600,700');
  body {
-    background-color: rgb(243, 243, 243);
+    background-color: #ffffff;
 	font-family: 'Poppins', sans-serif;
 	font-weight: normal;
 	font-style: normal;
@@ -532,45 +532,30 @@ i.fa-solid.fa-chevron-right.promotional-banner-icon {
     Top Brand Area Css
 ==========================================
 */
-.top-brand-body-content{
-	position: relative;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	width: 100%;
-	height: 280px;
+
+.top-brand-image img {
+    width: 100%;
+    height: 250px;
+    border: 1px solid #d7537b;
+    padding: 45px 25px;
+    border-radius: 5px 5px 0px 0px;
 }
-.top-brand-text {
-	position: absolute;
-    border-radius: 3px;
-    background: rgba(255,255,255,1 );
-    word-wrap: break-word;
-    padding: 5px;
+.top-brand-content {
+    background-color: #d7537b;
     text-align: center;
-    left: 0;
-    right: 0;
-    bottom: 20px;
-    max-width: 100%;
-    width: auto;
-    margin-right: 20px;
-    margin-left: 20px;
-    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
-    bottom: 0px;
-    text-transform: capitalize;
-    padding: 20px 5px;
-    height: 85px;
+    height: 50px;
+    padding: 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border-radius: 0px 0px 5px 5px;
 }
-.top-brand-text-discount {
-    font-weight: 400;
-    line-height: 1.2;
-    padding: 0 5px;
-    color: #d7537b;
-    font-size: 18px;
-    margin: 0 4px;
+span.top-brand-title {
+    display: block;
 }
-.top-brand-text-description {
-    font-size: 16px;
-    color: #3f4144;
+a.top-brand-link{
+    color: #000000;
 }
 /*
 ==========================================
@@ -1011,10 +996,10 @@ span.best-seller-discount-price {
 }
 .category-style {
     margin-top: 0px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     border-top: 2px solid #ddd;
-    padding-top: 30px;
-  }
+    padding-top: 10px;
+}
 .slider-image{
     height: 350px;
 }

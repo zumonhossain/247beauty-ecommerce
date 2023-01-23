@@ -10,11 +10,11 @@
                     <h4 class="user-registration"><i class="mdi mdi-account-circle"></i>Sub Category Update Information</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('sub-category.update') }}" id="myForm" class="form-horizontal" enctype="multipart/form-subcategory">
+                    <form method="POST" action="{{ route('sub-category.update') }}" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
 
-                        <input type="hidden" name="id" class="form-control" value="{{ $subcategory->id }}">
-                        <input type="hidden" name="slug" class="form-control" value="{{ $subcategory->category_slug }}">
+                        <input type="text" name="id" class="form-control" value="{{ $subcategory->id }}">
+                        <input type="text" name="slug" class="form-control" value="{{ $subcategory->subcategory_slug }}">
 
                         <div class="row row-sm">
                             <div class="col-sm-6 mb-2">
@@ -38,6 +38,16 @@
                                     @error('subcategory_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <div class="form-group">
+                                    <label class="form-control-label">Sub Category Image<span class="require_star">*</span></label>
+                                    <input type="file" name="subcategory_image" class="form-control" onchange="mainThambUrl(this)">
+
+                                    <img class="card-img-top" src="{{asset('uploads/admin/category/'.$subcategory->subcategory_image)}}" alt="Card image cap" style="height: 100px; width:150px;">
+
+                                    <img src="" id="mainThmb">
                                 </div>
                             </div>
                             <div class="col-sm-12 mt-4">
